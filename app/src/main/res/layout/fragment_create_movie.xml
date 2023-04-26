@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundLayout"
-    tools:context=".CreateMovieFragment">
+    tools:context=".ui.movie.CreateMovieFragment">
 
     <TextView
         android:id="@+id/textView7"
@@ -35,6 +35,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -57,6 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/TextField_name">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/category_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -79,6 +81,7 @@
         app:layout_constraintTop_toBottomOf="@+id/TextField_category">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/description_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -101,6 +104,7 @@
         app:layout_constraintTop_toBottomOf="@+id/TextField_description">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/calification_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -110,7 +114,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/action_submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/top_text_gap"
