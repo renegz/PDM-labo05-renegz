@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.example.laboratorio05guzman.data.models.MovieModel
 import com.example.laboratorio05guzman.databinding.FragmentCreateMovieBinding
 
 class CreateMovieFragment : Fragment() {
@@ -30,25 +29,36 @@ class CreateMovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.actionSubmit.setOnClickListener{
-            createMovie()
+
+        setViewModel()
+        setObserver()
+    }
+
+    private fun setViewModel(){
+        binding.viewmodel = viewModel
+    }
+
+    private fun setObserver(){
+        viewModel.status.observe(viewLifecycleOwner) { status ->
+            when{
+                status.equals(MovieViewModel.MOVIE_CREATED) -> {
+                    Log.d("TAG APP", status)
+                    Log.d("TAG APP", viewModel.getMovies().toString())
+
+                    viewModel.clearStatus()
+                    viewModel.clearData()
+
+                    findNavController().popBackStack()
+                }
+                status.equals(MovieViewModel.WRONG_DATA) -> {
+                    Log.d("APP TAG", status)
+                    viewModel.clearStatus()
+                }
+            }
         }
     }
 
-    private fun createMovie(){
-        //binding.apply...
-        val newMovie = MovieModel(
-            binding.nameValue.text.toString(),
-            binding.categoryValue.text.toString(),
-            binding.descriptionValue.text.toString(),
-            binding.calificationValue.text.toString()
-        )
+    /*
 
-        viewModel.addMovie(newMovie)
-
-        Log.d("TAG APP", viewModel.getMovies().toString())
-
-        findNavController().popBackStack()
-    }
-
+    */
 }
