@@ -1,4 +1,4 @@
-package com.example.laboratorio05guzman.ui.movie
+package com.example.laboratorio05guzman.ui.movie.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,6 +7,7 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.laboratorio05guzman.MovieReviewerApplication
 import com.example.laboratorio05guzman.data.models.MovieModel
+import com.example.laboratorio05guzman.data.qualification
 import com.example.laboratorio05guzman.repository.MovieRepository
 
 class MovieViewModel(private val repository: MovieRepository):ViewModel() {
@@ -55,6 +56,13 @@ class MovieViewModel(private val repository: MovieRepository):ViewModel() {
 
     fun clearStatus(){
         status.value = BASE_STATE
+    }
+
+    fun setSelectedMovie(movie: MovieModel){
+        name.value = movie.name
+        category.value = movie.category
+        description.value = movie.description
+        calification.value = movie.qualification
     }
 
     companion object{
